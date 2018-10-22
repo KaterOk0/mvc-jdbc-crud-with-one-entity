@@ -4,10 +4,10 @@
 <title>Spring MVC and JDBC CRUD Example</title>
 <body>
 <h2>Spring MVC and JDBC CRUD Example</h2>
-Id : ${userDetails.id}
-<br /> First Name : ${userDetails.firstName}
-<br /> Last Name : ${userDetails.lastName}
-<br /> Email : ${userDetails.email}
-<br /> DOB : ${userDetails.dob}
+Id : ${user.id}
+<br /> First Name : ${user.firstName}
+<br /> Surname : ${user.surname}
+<br /> Email : ${user.email}
+<br /> User Role : ${user.userRole}
 </body>
 </html>

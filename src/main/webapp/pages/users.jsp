@@ -9,27 +9,29 @@
     ${msg}
 </c:if>
 <c:choose>
-    <c:when test="${userDetails != null}">
+    <c:when test="${user != null}">
         <h3>List of Users</h3>
         <table cellpadding="5" cellspacing="5">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>First Name</th>
-                <th>Last Name</th>
+                <th>Surname</th>
                 <th>Email</th>
-                <th>DOB</th>
-                <th>Actions</th>
+                <th>Password</th>
+                <th>UserRole</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="user" items="${userDetails}">
+            <c:forEach var="user" items="${user}">
                 <tr>
                     <td>${user.id}</td>
                     <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
+                    <td>${user.surname}</td>
                     <td>${user.email}</td>
-                    <td>${user.dob}</td>
+                    <td>${user.password}</td>
+                    <td>${user.userRole}</td>
+
                     <td><a
                             href="<%=request.getContextPath()%>/update/user/${user.id}">Update</a>
                         &nbsp; <a
