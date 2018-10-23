@@ -30,7 +30,12 @@
     </bean>
        <!-- service -->
     <bean id="userService" class="com.company.service.impl.UserServiceImpl" />
+    <bean id ="interviewService" class="com.company.service.impl.InterviewServiceImpl"/>
+    <bean id ="interviewFeedbackService" class="com.company.service.impl.InterviewFeedbackServiceImpl"/>
 
     <!-- dao -->
     <bean id="userDao" class="com.company.dao.impl.UserDaoImpl" />
+    <bean id="interviewDao" class="com.company.dao.impl.InterviewDaoImpl" />
+    <bean id="interviewFeedbackDao" class="com.company.dao.impl.InterviewFeedbackDaoIml" />
+
 </beans>

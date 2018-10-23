@@ -7,8 +7,9 @@ import javax.validation.constraints.NotNull;
 public class Interview {
     private int id;
 
-    @DateTimeFormat
+    @Date
     private String plan_date;
+    @Date
     private String fact_date;
 
     @NotNull
