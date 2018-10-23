@@ -34,7 +34,7 @@ public class InterviewFeedbackController {
 
     @RequestMapping(value = "/interviewFeedback/add", method = RequestMethod.GET)
     public String addPage(Model model) {
-        model.addAttribute("InterviewFeedback", new InterviewFeedback());
+        model.addAttribute("interviewFeedback", new InterviewFeedback());
         return "addInterviewFeedback";
     }
 
@@ -49,7 +49,7 @@ public class InterviewFeedbackController {
         int resp = interviewFeedbackService.addInterviewFeedback(interviewFeedback);
         if (resp > 0) {
             interviewFeedbackModel.addAttribute("msg", "InterviewFeedback with id : " + resp + " added successfully.");
-            interviewFeedbackModel.addAttribute("InterviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
+            interviewFeedbackModel.addAttribute("interviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
             return "interviewFeedbacks";
         } else {
             interviewFeedbackModel.addAttribute("msg", "InterviewFeedback addition failed.");
@@ -60,13 +60,13 @@ public class InterviewFeedbackController {
     @RequestMapping(value = "/delete/interviewFeedback/{id}", method = RequestMethod.GET)
     public String deleteInterviewFeedback(@PathVariable("id") int id, ModelMap interviewFeedbackModel) {
         int resp = interviewFeedbackService.deleteInterviewFeedback(id);
-        interviewFeedbackModel.addAttribute("InterviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
+        interviewFeedbackModel.addAttribute("interviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
         if (resp > 0) {
             interviewFeedbackModel.addAttribute("msg", "InterviewFeedback with id : " + id + " deleted successfully.");
         } else {
             interviewFeedbackModel.addAttribute("msg", "InterviewFeedback with id : " + id + " deletion failed.");
         }
-        return "InterviewFeedbacks";
+        return "interviewFeedbacks";
     }
 
     @RequestMapping(value = "/update/interviewFeedback/{id}", method = RequestMethod.GET)
@@ -82,18 +82,18 @@ public class InterviewFeedbackController {
         if (bindingResult.hasErrors()) {
             return "updateInterviewFeedback";
         }
-        model.addAttribute("InterviewFeedback", interviewFeedback);
+        model.addAttribute("interviewFeedback", interviewFeedback);
 
         int resp = interviewFeedbackService.updateInterviewFeedback(interviewFeedback);
         model.addAttribute("id", interviewFeedback.getInterview_id());
         if (resp > 0) {
             model.addAttribute("msg", "InterviewFeedback with id : " + interviewFeedback.getInterview_id() + " updated successfully.");
-            model.addAttribute("InterviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
-            return "InterviewFeedbacks";
+            model.addAttribute("interviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
+            return "interviewFeedbacks";
         } else {
             model.addAttribute("msg", "InterviewFeedback with id : " + interviewFeedback.getInterview_id() + " update failed.");
-            model.addAttribute("InterviewFeedback", interviewFeedbackService.getInterviewFeedback(interviewFeedback.getInterview_id()));
-            return "update";
+            model.addAttribute("interviewFeedback", interviewFeedbackService.getInterviewFeedback(interviewFeedback.getInterview_id()));
+            return "updateInterviewFeedback";
         }
     }
 }

@@ -92,7 +92,7 @@ public class InterviewController {
         } else {
             interviewModel.addAttribute("msg", "Interview with id : " + interview.getId() + " update failed.");
             interviewModel.addAttribute("interview", interviewService.getInterview(interview.getId()));
-            return "update";
+            return "updateInterview";
         }
     }
 }
