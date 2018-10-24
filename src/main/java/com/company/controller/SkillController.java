@@ -36,13 +36,12 @@ public class SkillController {
     }
 
     @RequestMapping(value = "add/skill", method = RequestMethod.POST)
-    public String addSkill(@RequestParam(value = "name", required = true) String name,
+    public String addSkill(Skill skill,
                            ModelMap skillModel) {
-        Skill skill = new Skill();
-        skill.setName(name);
+        skillModel.addAttribute("skill", skill);
         int resp = skillService.addSkill(skill);
         if (resp > 0) {
-            skillModel.addAttribute("msg", "Skill: " + name + " added successfully.");
+            skillModel.addAttribute("msg", "Skill: " + skill.getName() + " added successfully.");
             skillModel.addAttribute("skill", skillService.getAllSkills());
             return "allSkills";
         } else {
