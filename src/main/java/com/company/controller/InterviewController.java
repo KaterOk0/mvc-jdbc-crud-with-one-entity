@@ -37,7 +37,7 @@ public class InterviewController {
 
     @RequestMapping(value = "/interviews", method = RequestMethod.GET)
     public String getInterviews(ModelMap interviewModel) {
-        interviewModel.addAttribute("interviews", interviewService.getAllInterviews());
+        interviewModel.addAttribute("interview", interviewService.getAllInterviews());
         return "interviews";
     }
 

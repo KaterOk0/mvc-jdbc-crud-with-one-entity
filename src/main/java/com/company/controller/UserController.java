@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getUsers(ModelMap userModel) {
-        userModel.addAttribute("users", userService.getAllUsers());
+        userModel.addAttribute("user", userService.getAllUsers());
         return "users";
     }
 
@@ -110,61 +110,4 @@ public class UserController {
             return "updateUser";
         }
     }
-
-
-    /*@ModelAttribute("userStateList")
-    public Map<String, String> getUserStateList() {
-        Map<String, String> userStateList = new HashMap<String, String>();
-        userStateList.put("manager", "Manager");
-        userStateList.put("developer", "Developer");
-        userStateList.put("interviewer", "Interviewer");
-        userStateList.put("admin", "Admin");
-        return userStateList;
-    }
-
-    @ModelAttribute("vacancyStateList")
-    public Map<String, String> getVacancyStateList() {
-        Map<String, String> vacancyStateList = new HashMap<String, String>();
-        vacancyStateList.put("waiting", "Waiting");
-        vacancyStateList.put("editing", "Editing");
-        return vacancyStateList;
-    }
-
-    @ModelAttribute("user_developerList")
-    public List<String> getUserDeveloperList() {
-        List<String> idList = new ArrayList<String>();
-        // добавляем id только тех юзеров, кто является developer
-        return idList;
-    }
-
-    @ModelAttribute("user_interviewerList")
-    public List<String> getUserInterviewerList() {
-        List<String> idList = new ArrayList<String>();
-        // добавляем id только тех юзеров, кто является interviewer
-        return idList;
-    }
-
-
-    @ModelAttribute("userIdList")
-    public List<String> getUserIdList() {
-        List<String> idList = new ArrayList<String>();
-        // добавляем все id юзеров
-        return idList;
-    }
-
-
-
-    @ModelAttribute("skillList")
-    public List<String> getSkillList() {
-        List<String> skillList = new ArrayList<String>();
-        // добавляем все названия скиллов
-        return skillList;
-    }
-
-    @ModelAttribute("feedbackInterviewIdList")
-    public List<String> getFeedbackInterviewIdIdList() {
-        List<String> idList = new ArrayList<String>();
-        // add all feedback interview ID
-        return idList;
-    }*/
 }
