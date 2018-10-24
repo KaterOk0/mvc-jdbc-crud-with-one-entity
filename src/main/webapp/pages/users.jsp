@@ -16,7 +16,8 @@
             <tr>
                 <th>ID</th>
                 <th>First Name</th>
-                <th>Surname</th>
+                <th> <a href="<%=request.getContextPath()%>/sorting/users/${order}">Surname</a>
+                </th>
                 <th>Email</th>
                 <th>Password</th>
                 <th>UserRole</th>
@@ -32,11 +33,10 @@
                     <td>${user.password}</td>
                     <td>${user.userRole}</td>
 
-                    <td><a
-                            href="<%=request.getContextPath()%>/update/user/${user.id}">Update</a>
-                        &nbsp; <a
-                                href="<%=request.getContextPath()%>/delete/user/${user.id}"
-                                onclick="return confirm('Do you really want to delete?')">Delete</a></td>
+                    <td><a href="<%=request.getContextPath()%>/update/user/${user.id}">Update</a>
+                        &nbsp;
+                        <a   href="<%=request.getContextPath()%>/delete/user/${user.id}"
+                             onclick="return confirm('Do you really want to delete?')">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

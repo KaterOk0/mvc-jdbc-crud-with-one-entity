@@ -3,22 +3,32 @@ package com.company.controller;
 
 import com.company.model.InterviewFeedback;
 import com.company.service.InterviewFeedbackService;
+import com.company.service.InterviewService;
+import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class InterviewFeedbackController {
 
     @Autowired
     private InterviewFeedbackService interviewFeedbackService;
+    @Autowired
+    private InterviewService interviewService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/interviewFeedback/{id}", method = RequestMethod.GET)
     public String getInterviewFeedback(@PathVariable int id, ModelMap interviewFeedbackModel) {
@@ -28,7 +38,7 @@ public class InterviewFeedbackController {
 
     @RequestMapping(value = "/interviewFeedbacks", method = RequestMethod.GET)
     public String getInterviewFeedbacks(ModelMap interviewFeedbackModel) {
-        interviewFeedbackModel.addAttribute("interviewFeedbacks", interviewFeedbackService.getAllInterviewFeedbacks());
+        interviewFeedbackModel.addAttribute("interviewFeedback", interviewFeedbackService.getAllInterviewFeedbacks());
         return "interviewFeedbacks";
     }
 
@@ -38,7 +48,7 @@ public class InterviewFeedbackController {
         return "addInterviewFeedback";
     }
 
-    @RequestMapping(value = "/InterviewFeedback/add.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/interviewFeedback/add.do", method = RequestMethod.POST)
     public String addInterviewFeedback(@Valid InterviewFeedback interviewFeedback, BindingResult bindingResult,
                                        Model interviewFeedbackModel) {
         if (bindingResult.hasErrors()) {
@@ -95,5 +105,20 @@ public class InterviewFeedbackController {
             model.addAttribute("interviewFeedback", interviewFeedbackService.getInterviewFeedback(interviewFeedback.getInterview_id()));
             return "updateInterviewFeedback";
         }
+    }
+    @ModelAttribute("interviewIdList")
+    public List<String> getInterviewIdList() {
+        List<String> idList = interviewService.getAllInterviewsID();
+        return idList;
+    }
+    @ModelAttribute("interviewerIdList")
+    public List<String> getInterviewerIdList() {
+        List<String> idList = userService.getInterviewerId();
+        return idList;
+    }
+    @ModelAttribute("feedbackStatesList")
+    public List<String> getFeedbackStatesList() {
+        List<String> idList = interviewFeedbackService.getFeedbackStates();
+        return idList;
     }
 }

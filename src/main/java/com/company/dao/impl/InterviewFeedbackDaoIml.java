@@ -31,6 +31,10 @@ public class InterviewFeedbackDaoIml implements InterviewFeedbackDao {
     }
 
     @Transactional
+    public List<String> getAllFeedbackStatess(){
+        return jdbcTemplate.queryForList("select name from feedback_state", String.class);
+    }
+    @Transactional
     public int addInterviewFeedback(InterviewFeedback interviewFeedback) {
         SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         simpleJdbcInsert.withTableName("interview_feedback");

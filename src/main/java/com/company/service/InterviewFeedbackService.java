@@ -8,6 +8,7 @@ public interface InterviewFeedbackService {
     public InterviewFeedback getInterviewFeedback(int id);
 
     public List<InterviewFeedback> getAllInterviewFeedbacks();
+    public List<String> getFeedbackStates();
 
     public int addInterviewFeedback(InterviewFeedback interviewFeedback);
 

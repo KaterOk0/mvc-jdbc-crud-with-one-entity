@@ -1,23 +1,33 @@
 package com.company.controller;
 
+import com.company.model.Candidate;
 import com.company.model.Interview;
+import com.company.service.CandidateService;
 import com.company.service.InterviewService;
+import com.company.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class InterviewController {
 
     @Autowired
     private InterviewService interviewService;
+    @Autowired
+    private VacancyService vacancyService;
+    @Autowired
+    private CandidateService candidateService;
 
     @RequestMapping(value = "/interview/{id}", method = RequestMethod.GET)
     public String getInterview(@PathVariable int id, ModelMap interviewModel) {
@@ -94,5 +104,18 @@ public class InterviewController {
             interviewModel.addAttribute("interview", interviewService.getInterview(interview.getId()));
             return "updateInterview";
         }
+
+    }
+    @ModelAttribute("vacancyIdList")
+    public List<String> getVacancyIdList() {
+        List<String> idList = vacancyService.getVacanciesID();
+        // добавляем все id вакансий
+        return idList;
+    }
+
+    @ModelAttribute("candidateIdList")
+    public List<String> getCandidateIdList() {
+        List<String> idList = candidateService.getAllCandidatesID();
+        return idList;
     }
 }

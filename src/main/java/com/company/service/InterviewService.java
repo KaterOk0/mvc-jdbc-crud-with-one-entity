@@ -9,6 +9,8 @@ public interface InterviewService {
     public Interview getInterview(int id);
 
     public List<Interview> getAllInterviews();
+    public List<String> getAllInterviewsID();
+
 
     public int addInterview(Interview interview);
 

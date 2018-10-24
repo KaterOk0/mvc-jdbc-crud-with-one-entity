@@ -32,10 +32,17 @@
     <bean id="userService" class="com.company.service.impl.UserServiceImpl" />
     <bean id ="interviewService" class="com.company.service.impl.InterviewServiceImpl"/>
     <bean id ="interviewFeedbackService" class="com.company.service.impl.InterviewFeedbackServiceImpl"/>
+    <bean id ="candidateService" class="com.company.service.impl.CandidateServiceImpl"/>
+    <bean id ="vacancyService" class="com.company.service.impl.VacancyServiceImpl"/>
+    <bean id ="skillService" class="com.company.service.impl.SkillServiceImpl"/>
+
 
     <!-- dao -->
     <bean id="userDao" class="com.company.dao.impl.UserDaoImpl" />
     <bean id="interviewDao" class="com.company.dao.impl.InterviewDaoImpl" />
     <bean id="interviewFeedbackDao" class="com.company.dao.impl.InterviewFeedbackDaoIml" />
+    <bean id="candidateDao" class="com.company.dao.impl.CandidateDaoImpl" />
+    <bean id="vacancyDao" class="com.company.dao.impl.VacancyDaoImpl" />
+    <bean id="skillDao" class="com.company.dao.impl.SkillDaoImpl" />
 
 </beans>
